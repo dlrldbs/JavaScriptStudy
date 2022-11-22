@@ -5,15 +5,14 @@
 <title>JavaScript</title>
 <style type="text/css">
 #displayDiv {
-			width: 600px;
-			margin : 0 auto;
-			padding : 30px 0;
-			font-size: 2em;
-			font-weight: bold;
-			text-align: center;
-			border: 1px solid black;
-}
-
+	width: 600px;
+	margin: 0 auto;
+	padding: 30px 0;
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center;
+	border: 2px solid black;
+}	
 </style>
 </head>
 <body>
@@ -26,19 +25,18 @@
 	var displayDiv=document.getElementById("displayDiv");
 	
 	//함수를 생성하여 변수에 저장
-	var displayClock=function(){
+	var displayClock=function() {
 		var now=new Date();//클라이언트의 현재 날짜와 시간이 저장된 Date 객체 생성
 		
-		var printNow=now.getFullYear+"년 "+(now.getMonth()+1)+"월"
-		+now.getDate()+"일 "+now.getHours()+"시 "
-		+now.getMinutes()+"분 "+now.getSeconds()+"초";
+		var printNow=now.getFullYear()+"년 "+(now.getMonth()+1)+"월 "+now.getDate()+"일 "
+			+now.getHours()+"시 "+now.getMinutes()+"분 "+now.getSeconds()+"초";
 		
 		displayDiv.innerHTML=printNow;
 	}
 	
 	displayClock();//함수 호출 - 현재 날짜와 시간 출력
 	
-	//1초마다 함수 호출 - 동적 페이지 구현
+	//1초마다 함수 호출 - 동적인 페이지 구현
 	setInterval(displayClock, 1000);
 	</script>
 </body>
