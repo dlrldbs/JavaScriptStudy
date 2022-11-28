@@ -6,34 +6,38 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <style type="text/css">
 fieldset {
-		  width: 800px;
-		  margin: 10px auto;
-}
-legend {
-		font-size: 1.2em;
-}
-#joinForm ul li {
-				list-style: none;
-				margin:15px 0;
-}
-#joinForm label {
-				width:100px;
-				text-align: right;
-				float : left;
-				margin-right: 10px
-}
-#btnFs {
-		text-align: center;
-}
-.error {
-		color: red;
-		margin-left:10px;
+	width: 800px;
+	margin: 10px auto;
 }
 
+legend {
+	font-size: 1.2em;
+}
+
+#joinForm ul li {
+	list-style-type: none;
+	margin: 15px 0;
+}
+
+#joinForm label {
+	width: 100px;
+	text-align: right;
+	float: left;
+	margin-right: 10px; 
+}
+
+#btnFs {
+	text-align: center;
+}
+
+.error {
+	color: red;
+	margin-left: 10px;
+}
 </style>
 </head>
 <body>
-	<h1>Scroll Event</h1>
+	<h1>Form Event</h1>
 	<hr>
 	<form action="21_submit_event.html" method="post" id="joinForm">
 		<fieldset>
@@ -60,7 +64,7 @@ legend {
 					<span id="emailMsg" class="error"></span>
 				</li>
 			</ul>
-		</fieldset>
+		</fieldset>	
 		
 		<fieldset id="btnFs">
 			<button type="submit" id="submitBtn">회원가입</button>
@@ -71,43 +75,43 @@ legend {
 	<script type="text/javascript">
 	$("#id").focus();
 	
-	//$(selector).submit(callback) : 선택자로 검색된 태그(form 태그)에서 제출 이벤트
-	//(Submit Event)가 발생된 경우 콜백함수를 호출하는 메소드
+	//$(selector).submit(callback) : 선택자로 검색된 태그(form 태그)에서 제출 이벤트(Submit
+	//Event)가 발생된 경우 콜백함수를 호출하는 메소드
 	$("#joinForm").submit(function() {
+		$(".error").text("");
+		
+		//검증 관련 상태를 저장하기 위한 변수 - false : 검증 실패, true : 검증 성공
+		var result=true;
 		
 		if($("#id").val()=="") {
-			$("#idMsg").text("아이디를 입력해 주세요");
+			$("#idMsg").text("아이디를 입력해 주세요.");
 			result=false;
 		}
 		
 		if($("#passwd").val()=="") {
-			$("#passwdMsg").text("비밀번호를 입력해 주세요");
+			$("#passwdMsg").text("비밀번호를 입력해 주세요.");
 			result=false;
 		}
 		
 		if($("#name").val()=="") {
-			$("#nameMsg").text("이름을 입력해 주세요");
+			$("#nameMsg").text("이름을 입력해 주세요.");
 			result=false;
 		}
 		
 		if($("#email").val()=="") {
-			$("#emailMsg").text("이메일을 입력해 주세요");
+			$("#emailMsg").text("이메일을 입력해 주세요.");
 			result=false;
 		}
-		
-		//result 변수에 [false]가 저장된 경우 태그의 기본 이벤트를 제거하고 이벤트 전달 중지
+
+		//result 변수에 [false]가 저장된 경우 태그의 기본 이벤트를 제거되고 이벤트 전달 중지
 		// => form 태그의 제출 이벤트가 취소되어 form 태그 미실행
 		return result;
 	});
 	
 	$("#resetBtn").click(function() {
 		$(".error").text("");
-		$("#id").focus("");
-	})
-	
-	
+		$("#id").focus();
+	});
 	</script>
-	
 </body>
-</html>	
-	
+</html>
